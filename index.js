@@ -5,7 +5,7 @@ const PORT = 8000;
 
 http.createServer((req, res) => {
     let path = req.url == "/" ? "index" : req.url.substring(1);
-    let realPath = ["index", "about", "contact-me"].includes(path);
+    let realPath = ["index", "about", "contact-me", "404"].includes(path);
     let fullPath = `pages/${path}`;
 
     if (realPath) {
