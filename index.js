@@ -1,5 +1,6 @@
 let http = require("node:http");
 let fs = require("node:fs");
+require("dotenv").config();
 
 const PORT = 8000;
 
@@ -14,6 +15,7 @@ http.createServer((req, res) => {
     fs.readFile(fullPath, (err, data) => {
         res.end(data);
     })
+    console.log(process.env.DEMO)
 }).listen(PORT, () => {
     console.log(`listening at localhost:${PORT}`)
 })
