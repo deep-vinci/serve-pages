@@ -4,12 +4,14 @@ let fs = require("node:fs");
 const PORT = 8000;
 
 http.createServer((req, res) => {
-    let path = req.url == "/" ? "index" : req.url;
+    let path = req.url == "/" ? "index" : req.url.substring(1);
+    let realPath = ["index", "about", "contact-me"].includes(path);
+    let fullPath = `pages/${path}`;
 
-    fs.readFile(`pages/${path}.html`, (err, data) => {
-        if (err) {
-            console.error(err)
-        }
+    if (realPath) {
+        fullPath = `pages/${path}.html`
+    }
+    fs.readFile(fullPath, (err, data) => {
         res.end(data);
     })
 }).listen(PORT, () => {
