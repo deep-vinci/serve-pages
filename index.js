@@ -15,7 +15,7 @@ http.createServer((req, res) => {
     fs.readFile(fullPath, (err, data) => {
         res.end(data);
     })
-    console.log(process.env.DEMO)
+    console.log(process.env.DEMO)   // testing env variables
 }).listen(PORT, () => {
     console.log(`listening at localhost:${PORT}`)
 })
